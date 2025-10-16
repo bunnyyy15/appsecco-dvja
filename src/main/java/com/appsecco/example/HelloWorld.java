@@ -34,7 +34,7 @@ public class HelloWorld extends ExampleSupport {
     /**
      * Provide default valuie for Message property.
      */
-    public static final String MESSAGE = "HelloWorld.message";
+    public static final String MESSAGE = "HelloWorld.message123";
 
     /**
      * Field for Message property.
