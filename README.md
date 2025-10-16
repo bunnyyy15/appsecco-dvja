@@ -1,63 +1,72 @@
-# Damn Vulnerable Java Application
+# Minimal AWS Java Pulumi Template
 
-## Quick Start
+This template provides a minimal Pulumi program written in Java that provisions an Amazon S3 bucket using the Pulumi AWS provider. It’s a great starting point for building AWS infrastructure with Pulumi and Java.
 
-Install Docker and Docker Compose.
+## Providers
+- AWS (pulumi/aws)
 
+## Resources
+- `aws.s3.BucketV2`: An S3 bucket resource.
+
+## Outputs
+- `bucketName`: The name of the created S3 bucket.
+
+## When to use this template
+Use this template if you:
+- Want a quick start with Pulumi in Java
+- Need an example of provisioning basic AWS resources
+- Are familiar with Maven and Java development
+
+## Prerequisites
+- Java Development Kit (JDK) 11 or later
+- Apache Maven
+- AWS credentials configured (via AWS CLI, environment variables, or shared credentials file)
+
+## Getting Started
+1. Create a new Pulumi project from this template:
+   ```bash
+   pulumi new aws-java
+   ```
+2. Follow the interactive prompts to set your project name, description, and AWS region (default: `us-east-1`).
+3. Change into your project directory:
+   ```bash
+   cd <project-name>
+   ```
+4. Deploy your stack:
+   ```bash
+   pulumi up
+   ```
+
+## Project Layout
 ```
-docker-compose up
+.
+├── Pulumi.yaml       # Pulumi project definition
+├── pom.xml           # Maven build configuration
+└── src/
+    └── main/
+        └── java/
+            └── myproject/
+                └── App.java  # Pulumi program
 ```
-Navigate to `http://localhost:8080`
-
-To update image
-
-```
-docker-compose build
-```
-
-## Requirements
-
-* Java 1.7+
-* Maven 3.x
-* MySQL Server
 
 ## Configuration
+This template supports the following configuration values:
+- `aws:region` (string) — AWS region to deploy into. Default: `us-east-1`.
 
-### Database
-
-Create MySQL database and credentials and configure the same in:
-
-```
-./src/main/webapp/WEB-INF/config.properties
-```
-
-### Schema Import
-
-Import the schema into MySQL database:
-
-```
-$ mysql -u USER -pPASSWORD dvja < ./db/schema.sql
+View or set configuration values:
+```bash
+pulumi config
+pulumi config set aws:region us-west-2
 ```
 
-## Build
+## Next Steps
+- Enhance `App.java` by adding more AWS resources (EC2, RDS, VPC, etc.)
+- Explore the Pulumi AWS provider reference for available services and options
+- Integrate your Pulumi project into a CI/CD pipeline
 
-```
-$ mvn clean package
-```
-
-The deployable `war` file is generated in targets directory.
-
-## Run with Jetty
-
-```
-$ mvn jetty:run
-```
-
-This will start the `Jetty` server on port 8080.
-
-## Deploy in Tomcat Server
-
-* Build app
-* Copy targets/dvja.war to Tomcat webapps directory
-* To serve as root application, copy as `ROOT.war` to Tomcat webapps directory.
-
+## Getting Help
+- Pulumi documentation: https://www.pulumi.com/docs/
+- AWS provider reference: https://www.pulumi.com/docs/reference/pkg/aws/
+- Pulumi Community Slack: https://slack.pulumi.com/
+- Stack Overflow (`pulumi` tag)
+- Report issues: https://github.com/pulumi/pulumi/issues
